@@ -1,0 +1,49 @@
+{
+  "name": "extract-faces",
+  "version": "0.0.0",
+  "description": "extract face information from images",
+  "main": "./lib/index.js",
+  "module": "./lib-esm/index.js",
+  "types": "./lib/index.d.ts",
+  "keywords": [],
+  "author": "Santi Miranda",
+  "license": "MIT",
+  "files": [
+    "src",
+    "lib",
+    "lib-esm"
+  ],
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "clean": "rimraf lib lib-esm",
+    "eslint": "eslint src --cache",
+    "eslint-fix": "npm run eslint -- --fix",
+    "prepack": "npm run tsc",
+    "prettier": "prettier --check src",
+    "prettier-write": "prettier --write src",
+    "test": "npm run test-only && npm run eslint && npm run prettier && npm run check-types",
+    "test-only": "jest --coverage",
+    "tsc": "npm run clean && npm run tsc-cjs && npm run tsc-esm",
+    "tsc-cjs": "tsc --project tsconfig.cjs.json",
+    "tsc-esm": "tsc --project tsconfig.esm.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheminfo/extract-faces.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cheminfo/extract-faces/issues"
+  },
+  "homepage": "https://github.com/cheminfo/extract-faces#readme",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.20.11",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/jest": "^29.2.5",
+    "eslint": "^8.32.0",
+    "eslint-config-cheminfo-typescript": "^11.2.2",
+    "jest": "^29.3.1",
+    "prettier": "^2.8.3",
+    "rimraf": "^4.1.0",
+    "typescript": "^4.9.4"
+  }
+}
