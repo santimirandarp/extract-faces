@@ -1,6 +1,6 @@
 {
   "name": "extract-faces",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "extract face information from images",
   "main": "./lib/index.js",
   "module": "./lib-esm/index.js",
