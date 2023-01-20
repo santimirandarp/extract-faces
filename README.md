@@ -11,7 +11,9 @@ Package still being written but it is already tested.
 
 ## Installation
 
-`npm i extract-faces`
+```shell
+npm i extract-faces
+```
 
 ## Example of usage (Browser or NodeJS)
 
