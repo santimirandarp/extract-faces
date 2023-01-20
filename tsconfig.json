@@ -3,12 +3,15 @@
     "allowJs": true,
     "checkJs": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "outDir": "lib",
     "sourceMap": true,
     "strict": true,
     "target": "es2020",
-    "module": "commonjs"
+    "module": "commonjs",
+    "rootDir": "./",
+    "skipLibCheck": true
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*", "./demo/main.ts"]
 }
