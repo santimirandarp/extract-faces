@@ -14,10 +14,9 @@ extract face information from images.
 ## Usage
 
 ```js
-import { myModule } from 'extract-faces';
+import { extractFaces } from 'extract-faces';
 
-const result = myModule(args);
-// result is ...
+const json = extractFaces(data);
 ```
 
 ## License
