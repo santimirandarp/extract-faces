@@ -5,18 +5,26 @@
 [![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
 
-extract face information from images.
+Extract face location of faces on images. 
+
+Package still being written but it is already tested.
 
 ## Installation
 
 `$ npm i extract-faces`
 
-## Usage
+## Usage (Browser or NodeJS)
 
 ```js
-import { extractFaces } from 'extract-faces';
+import { extractFaces, loadNeuralNetForBrowserOrNode as loadNN } from 'extract-faces';
 
-const json = extractFaces(data);
+loadNeuralNetForBrowserOrNode
+  .then( async (options) => { 
+  // possible to loop over images while NN is loaded to memory
+  const detections = await extractFaces("path/toImage.jpg", options)
+  // log the detections object ( x, y, width, height, score )
+  console.log(detections)
+ })  
 ```
 
 ## License
