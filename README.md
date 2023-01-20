@@ -15,6 +15,10 @@ Package still being written but it is already tested.
 npm i extract-faces
 ```
 
+## Requirements
+
+- You will need the [models](./models) and pass the path to the NN loader
+
 ## Example of usage (Browser or NodeJS)
 
 ```js
@@ -38,8 +42,6 @@ loadNN(options).then(async (netOpts) => {
   console.log(detections); //sample output below
 });
 ```
-
-- You will need the [models](./models) and pass the path to the NN loader
 
 ## Result example
 
