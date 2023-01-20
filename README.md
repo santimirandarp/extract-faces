@@ -13,12 +13,25 @@ Package still being written but it is already tested.
 
 `$ npm i extract-faces`
 
-## Usage (Browser or NodeJS)
+## Example of usage (Browser or NodeJS)
 
 ```js
-import { extractFaces, loadNeuralNetForBrowserOrNode as loadNN } from 'extract-faces';
 
-loadNeuralNetForBrowserOrNode
+import {  
+     extractFaces, 
+     loadNeuralNetForBrowserOrNode as loadNN, 
+     SsdMobilenetv1Options, // this also specifies which NN to load from ./models
+     TinyFaceDetectorOptions // ditto
+    } from 'extract-faces';
+
+// specify path to models and NN+options
+const options = {
+    modelOptions: new SsdMobilenetv1Options({ minConfidence: 0.36 }),
+    modelsPath: '../models',
+  };
+
+// run the code
+loadNeuralNetForBrowserOrNode()
   .then( async (options) => { 
   // possible to loop over images while NN is loaded to memory
   const detections = await extractFaces("path/toImage.jpg", options)
@@ -26,6 +39,8 @@ loadNeuralNetForBrowserOrNode
   console.log(detections)
  })  
 ```
+
+* You will need the [models](./models) and pass the path to the NN loader
 
 ## License
 
