@@ -24,16 +24,16 @@ import {
 } from 'extract-faces';
 
 // specify path to models and NN+options
-const options = {
+const loadOptions = {
   modelOptions: new SsdMobilenetv1Options({ minConfidence: 0.36 }),
   modelsPath: '../models',
 };
 
 // run the code
-loadNeuralNetForBrowserOrNode().then(async (options) => {
-  // possible to loop over images while NN is loaded to memory
+loadNeuralNetForBrowserOrNode(loadOptions).then(async (netOptions) => {
+  // possible to loop over images here
   const detections = await extractFaces('path/toImage.jpg', options);
-  // log the detections object ( x, y, width, height, score )
+  // log detections ( x, y, width, height, score )
   console.log(detections);
 });
 ```
