@@ -29,12 +29,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cheminfo/extract-faces.git"
+    "url": "git+https://github.com/santimirandarp/extract-faces.git"
   },
   "bugs": {
-    "url": "https://github.com/cheminfo/extract-faces/issues"
+    "url": "https://github.com/santimirandarp/extract-faces/issues"
   },
-  "homepage": "https://github.com/cheminfo/extract-faces#readme",
+  "homepage": "https://github.com/santimirandarp/extract-faces#readme",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.20.11",
     "@babel/preset-typescript": "^7.18.6",
