@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/santimirandarp/extract-faces/compare/v1.0.0...v1.0.1) (2023-01-20)
+
+
+### Bug Fixes
+
+* readme with correct names ([a846558](https://github.com/santimirandarp/extract-faces/commit/a846558a0e6e807c6afd8098cfa6688f772b0739))
+
 ## 1.0.0 (2023-01-20)
 
 
