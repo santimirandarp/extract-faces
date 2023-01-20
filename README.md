@@ -18,22 +18,22 @@ Package still being written but it is already tested.
 ```js
 import {
   extractFaces,
-  loadNeuralNetForBrowserOrNode as loadNN,
+  loadNNForBrowserOrNode as loadNN,
   SsdMobilenetv1Options, // this also specifies which NN to load from ./models
   TinyFaceDetectorOptions, // ditto
-} from 'extract-faces';
+} from "extract-faces";
 
 // specify path to models and NN+options
-const loadOptions = {
+const options = {
   modelOptions: new SsdMobilenetv1Options({ minConfidence: 0.36 }),
-  modelsPath: '../models',
+  modelsPath: "./models",
 };
 
 // run the code
-loadNeuralNetForBrowserOrNode(loadOptions).then(async (netOptions) => {
-  // possible to loop over images here
-  const detections = await extractFaces('path/toImage.jpg', options);
-  // log detections ( x, y, width, height, score )
+loadNN(options).then(async (netOpts) => {
+  // possible to loop over images while NN is loaded to memory
+  const detections = await extractFaces("./testThreeFaces.jpg", netOpts);
+  // log the detections object ( x, y, width, height, score )
   console.log(detections);
 });
 ```
