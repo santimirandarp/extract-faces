@@ -5,7 +5,7 @@
 [![Test coverage][codecov-image]][codecov-url]
 [![npm download][download-image]][download-url]
 
-Extract face location of faces on images. 
+Extract location (coordinates) of faces on images. 
 
 Package still being written but it is already tested.
 
