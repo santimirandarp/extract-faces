@@ -11,11 +11,10 @@ import { type LoadNN } from './loadNeuralNet';
 type LoadFrom = Parameters<typeof IJS.load>[0];
 
 /**
- * Takes an image source and the async function that will load the NN and
- * set the options for it. And returns the faces found in the image or `[]`
- * @param inputImage
+ * Takes an image source and the loadNN output. This will set the options for it.
+ * @param inputImage -  from type supported by `ImageJS.load`
  * @param options
- * @returns
+ * @returns returns the faces found in the image or `[]`
  */
 async function extractFaces(
   inputImage: LoadFrom,

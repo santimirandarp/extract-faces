@@ -4,7 +4,7 @@ import {
   nets,
   env,
 } from '@vladmandic/face-api';
-import { isBrowser } from 'browser-or-node';
+import { isBrowser, isNode } from 'browser-or-node';
 import { Canvas, Image, ImageData } from 'canvas';
 
 /**
@@ -25,8 +25,7 @@ interface Options {
 
 export type LoadNN = typeof loadNNForBrowserOrNode;
 /**
- * Loads the neural network and sets the options for it
- * The way it does depends on the environment.
+ * Loads the neural network for a specific environment.
  * @param options - Options
  * @returns
  */
@@ -41,15 +40,12 @@ export async function loadNNForBrowserOrNode(
   };
   if (isBrowser) {
     await forBrowser(newOptions);
+  } else if (isNode) {
+    await forNode(newOptions);
   } else {
-    await setEnvironment(newOptions);
+    throw new Error('Current environment is not supported');
   }
   return newOptions;
-}
-
-async function setEnvironment(opts: Options) {
-  env.monkeyPatch({ Canvas, Image, ImageData } as any);
-  await forNode(opts);
 }
 
 async function forBrowser(opts: Options) {
@@ -64,6 +60,7 @@ async function forBrowser(opts: Options) {
 }
 
 async function forNode(opts: Options) {
+  env.monkeyPatch({ Canvas, Image, ImageData } as any);
   const { modelOptions, modelsPath } = opts;
   if (modelOptions instanceof TinyFaceDetectorOptions) {
     await nets.tinyFaceDetector.loadFromDisk(modelsPath);

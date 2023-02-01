@@ -1,5 +1,6 @@
 import { join } from 'path';
 
+import { FaceDetection } from '@vladmandic/face-api';
 import { describe, it, expect } from 'vitest';
 
 import { extractFaces } from '../extractFaces';
@@ -11,7 +12,7 @@ describe('test detectors', () => {
   it('should return a cleaned up detection object', async () => {
     const myImg = join(imgPath, 'testThreeFaces.jpg');
     const options = await loadNNForBrowserOrNode({ modelsPath });
-    const result = await extractFaces(myImg, options);
+    const result = (await extractFaces(myImg, options)) as FaceDetection[];
     expect(result).toHaveLength(3);
     const {
       box: { x, y, width, height },

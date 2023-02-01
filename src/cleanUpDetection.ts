@@ -11,7 +11,15 @@ type FaceDetails = {
   score: number;
 };
 
-export function cleanUpDetection(detection: OldFaceDetails): FaceDetails[] {
+/**
+ *
+ * @param detection - Coordinates from `detectAllFaces`
+ * @returns - Clean coords from face(s) or `null`. Returning `null`
+ * avoids truthy value coming from `[]`.
+ */
+export function cleanUpDetection(
+  detection: OldFaceDetails,
+): FaceDetails[] | null {
   const simplerObject: FaceDetails[] = [];
   for (const face of detection) {
     simplerObject.push({
@@ -24,5 +32,5 @@ export function cleanUpDetection(detection: OldFaceDetails): FaceDetails[] {
       score: face.score,
     });
   }
-  return simplerObject;
+  return simplerObject.length > 0 ? simplerObject : null;
 }
