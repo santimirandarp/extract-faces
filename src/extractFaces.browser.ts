@@ -1,9 +1,8 @@
 import { detectAllFaces, SsdMobilenetv1Options } from '@vladmandic/face-api';
 
 import { cleanUpDetection } from './cleanUpDetection';
-import { type LoadNN } from './loadNeuralNet';
 
-type LoadFrom = HTMLCanvasElement | HTMLImageElement
+type LoadFrom = HTMLCanvasElement | HTMLImageElement;
 
 /**
  * Takes an image source and the loadNN output. This will set the options for it.
@@ -13,10 +12,11 @@ type LoadFrom = HTMLCanvasElement | HTMLImageElement
  */
 async function extractFaces(
   inputImage: LoadFrom,
-  options: Awaited<ReturnType<LoadNN>>,
+  options: { minConfidence?: number, maxResults?: number }
 ) {
-  const detection = await detectAllFaces(inputImage, options.modelOptions);
+  if (!options) options = { minConfidence: 0.5, maxResults: 10 }
+  const detection = await detectAllFaces(inputImage, new SsdMobilenetv1Options(options))
   return cleanUpDetection(detection);
 }
 
-export { extractFaces, SsdMobilenetv1Options };
+export { extractFaces };
