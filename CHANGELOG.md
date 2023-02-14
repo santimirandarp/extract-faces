@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/santimirandarp/extract-faces/compare/v1.0.1...v1.1.0) (2023-02-14)
+
+
+### Features
+
+* separate browser from node ([5f17d5b](https://github.com/santimirandarp/extract-faces/commit/5f17d5b5ef223ade151eb1dab3a6239c206d76cc))
+
 ## [1.0.1](https://github.com/santimirandarp/extract-faces/compare/v1.0.0...v1.0.1) (2023-01-20)
 
 
