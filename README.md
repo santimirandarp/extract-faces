@@ -22,25 +22,16 @@ npm i extract-faces
 ## Example of usage (Browser or NodeJS)
 
 ```js
-import {
-  extractFaces,
-  loadNNForBrowserOrNode as loadNN,
-  // 2 available nets
-  SsdMobilenetv1Options,
-  TinyFaceDetectorOptions,
-} from 'extract-faces';
+//import * as tf from "@tensorflow/tfjs-node" //to run faster in NodeJS, no call needed
+import { extractFaces, loadNN } from 'extract-faces';
 
-// optional in which case we use similar defaults
-const options = {
-  modelOptions: new SsdMobilenetv1Options({ minConfidence: 0.36 }),
-  modelsPath: './models',
+async function run(){
+  await loadNN("./path/")
+  const detections = await extractFaces('./testThreeFaces.jpg');
+  console.log(detections); //sample output below
 };
 
-loadNN(options).then(async (netOpts) => {
-  // you can loop over images while NN is loaded to memory
-  const detections = await extractFaces('./testThreeFaces.jpg', netOpts);
-  console.log(detections); //sample output below
-});
+run()
 ```
 
 ## Result example
