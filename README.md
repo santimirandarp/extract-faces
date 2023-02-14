@@ -13,10 +13,11 @@ Extracts location (coordinates) of faces on images.
 
 `npm i extract-faces`
 
+To use with Node JS it needs `npm i @tensorflow/tfjs-node canvas` as well.
+
 ## Example (Browser or Node)
 
 ```js
-//import * as tf from "@tensorflow/tfjs-node" //to run faster in NodeJS, no call needed
 import { extractFaces, loadNN } from 'extract-faces';
 
 async function run(){

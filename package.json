@@ -56,10 +56,10 @@
   "dependencies": {
     "@tensorflow/tfjs": "^4.2.0",
     "@vladmandic/face-api": "1.7.8",
-    "canvas": "^2.11.0",
     "image-js": "0.0.0-next-41e169151b"
   },
   "peerDependencies": {
-    "@tensorflow/tfjs-node": "^4.2.0"
+    "@tensorflow/tfjs-node": "^4.2.0",
+    "canvas": "^2.11.0"
   }
 }

@@ -34,7 +34,7 @@ describe('test detectors', () => {
         origin: { row: Math.round(y), column: Math.round(x) },
         width: Math.round(width),
         height: Math.round(height),
-        strokeColor: [125, 0, 0],
+        strokeColor: [125, 0, 0],//rgb
       });
     }
     await ijs.write(join(imgPath, './result.jpg'), r);
