@@ -12,10 +12,13 @@ type LoadFrom = HTMLCanvasElement | HTMLImageElement;
  */
 async function extractFaces(
   inputImage: LoadFrom,
-  options: { minConfidence?: number, maxResults?: number }
+  options: { minConfidence?: number; maxResults?: number },
 ) {
-  if (!options) options = { minConfidence: 0.5, maxResults: 10 }
-  const detection = await detectAllFaces(inputImage, new SsdMobilenetv1Options(options))
+  if (!options) options = { minConfidence: 0.5, maxResults: 10 };
+  const detection = await detectAllFaces(
+    inputImage,
+    new SsdMobilenetv1Options(options),
+  );
   return cleanUpDetection(detection);
 }
 

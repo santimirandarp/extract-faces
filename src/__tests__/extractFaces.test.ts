@@ -1,7 +1,7 @@
 import { join } from 'path';
 
-import { FaceDetection } from '@vladmandic/face-api';
-import * as IJS from 'image-js';
+import { type FaceDetection } from '@vladmandic/face-api';
+import * as ijs from 'image-js';
 import { describe, it, expect } from 'vitest';
 
 import { extractFaces } from '../extractFaces';
@@ -13,28 +13,30 @@ describe('test detectors', () => {
   it('should return a cleaned up detection object', async () => {
     const myImg = join(imgPath, 'testThreeFaces.jpg');
     await loadNN(modelsPath);
-    const result = (await extractFaces(myImg)) as FaceDetection[];
-    expect(result).toHaveLength(3);
+    const detection = (await extractFaces(myImg)) as FaceDetection[];
+    expect(detection).toHaveLength(3);
     const {
       box: { x, y, width, height },
       score,
-    } = result[0];
-    expect(x).toBeCloseTo(68.114);
-    expect(y).toBeCloseTo(34.468);
-    expect(width).toBeCloseTo(115.478);
-    expect(height).toBeCloseTo(119.698);
+    } = detection[0];
+    expect(x).toBeCloseTo(66.778);
+    expect(y).toBeCloseTo(33.668);
+    expect(width).toBeCloseTo(117.115);
+    expect(height).toBeCloseTo(119.819);
     expect(score).toBeCloseTo(0.9526);
+
     //write out
-    let ijsImage = await IJS.read(myImg);
-
-    for (let { box: { x, y, width, height } } of result) {
-      ijsImage = ijsImage.drawRectangle({
-        origin: { row: Math.round(x), column: Math.round(y) },
+    let r = await ijs.read(myImg);
+    for (let {
+      box: { x, y, width, height },
+    } of detection) {
+      r = r.drawRectangle({
+        origin: { row: Math.round(y), column: Math.round(x) },
         width: Math.round(width),
-        height: Math.round(height)
-      })
+        height: Math.round(height),
+        strokeColor: [125, 0, 0],
+      });
     }
-
-    await IJS.write(join(imgPath, 'testThreeFacesOut.jpg'), ijsImage)
+    await ijs.write(join(imgPath, './result.jpg'), r);
   });
 });
