@@ -11,13 +11,9 @@ Extracts location (coordinates) of faces on images.
 
 ## Installation
 
-```shell
-npm i extract-faces
-```
+`npm i extract-faces`
 
-## Requirements
-
-## Example of usage (Browser or NodeJS)
+## Example (Browser or Node)
 
 ```js
 //import * as tf from "@tensorflow/tfjs-node" //to run faster in NodeJS, no call needed
