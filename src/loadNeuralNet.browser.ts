@@ -1,5 +1,4 @@
-import { SsdMobilenetv1Options, nets, env } from '@vladmandic/face-api';
-import { Canvas, Image, ImageData } from 'canvas';
+import { SsdMobilenetv1Options, nets } from '@vladmandic/face-api';
 
 /**
  * Options for the extractFaces function
@@ -30,15 +29,14 @@ export async function loadNN(options: Partial<Options> = {}): Promise<Options> {
       options.modelOptions || new SsdMobilenetv1Options({ minConfidence: 0.5 }),
     modelsPath: options.modelsPath || '../models',
   };
-  await nodeNN(newOptions);
+  await browserNN(newOptions);
   return newOptions;
 }
 
-async function nodeNN(opts: Options) {
-  env.monkeyPatch({ Canvas, Image, ImageData } as any);
+async function browserNN(opts: Options) {
   const { modelOptions, modelsPath } = opts;
   if (modelOptions instanceof SsdMobilenetv1Options) {
-    await nets.ssdMobilenetv1.loadFromDisk(modelsPath);
+    await nets.ssdMobilenetv1.loadFromUri(modelsPath);
   } else {
     throw new Error('No NN found in options');
   }

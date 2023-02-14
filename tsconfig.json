@@ -8,8 +8,8 @@
     "sourceMap": true,
     "strict": true,
     "target": "es2020",
-    "module": "commonjs",
     "skipLibCheck": true
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "lib": ["DOM"]
 }

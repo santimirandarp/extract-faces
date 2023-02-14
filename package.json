@@ -5,6 +5,10 @@
   "main": "./lib/index.js",
   "module": "./lib-esm/index.js",
   "types": "./lib/index.d.ts",
+  "browser": {
+    "./lib/loadNeuralNet.js": "./lib/loadNeuralNet.browser.js",
+    "./lib/extractFaces.js": "./lib/extractFaces.browser.js"
+  },
   "keywords": [],
   "author": "Santi Miranda",
   "license": "MIT",
@@ -25,7 +29,8 @@
     "test-only": "vitest --coverage --run",
     "tsc": "npm run clean && npm run tsc-cjs && npm run tsc-esm",
     "tsc-cjs": "tsc --project tsconfig.cjs.json",
-    "tsc-esm": "tsc --project tsconfig.esm.json"
+    "tsc-esm": "tsc --project tsconfig.esm.json",
+    "build": "npm run tsc-esm && cheminfo-build --out ./dist --entry lib-esm/index.js --root FileListUtil"
   },
   "repository": {
     "type": "git",
@@ -38,21 +43,22 @@
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.20.11",
     "@babel/preset-typescript": "^7.18.6",
-    "@types/jest": "^29.2.5",
-    "@vitest/coverage-c8": "^0.27.2",
-    "eslint": "^8.32.0",
+    "@types/jest": "^29.4.0",
+    "@vitest/coverage-c8": "^0.28.5",
+    "cheminfo-build": "^1.2.0",
+    "eslint": "^8.34.0",
     "eslint-config-cheminfo-typescript": "^11.2.2",
-    "prettier": "^2.8.3",
-    "rimraf": "^4.1.0",
-    "typescript": "^4.9.4",
-    "vitest": "^0.27.2"
+    "prettier": "^2.8.4",
+    "rimraf": "^4.1.2",
+    "typescript": "^4.9.5",
+    "vitest": "^0.28.5"
   },
   "dependencies": {
     "@tensorflow/tfjs": "^4.2.0",
     "@tensorflow/tfjs-node": "^4.2.0",
-    "@vladmandic/face-api": "^1.7.8",
+    "@vladmandic/face-api": "^1.7.9",
     "browser-or-node": "^2.1.1",
     "canvas": "^2.11.0",
-    "image-js": "^0.35.2"
+    "image-js": "^0.0.0-next-41e169151b"
   }
 }
