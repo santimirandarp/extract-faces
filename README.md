@@ -17,8 +17,6 @@ npm i extract-faces
 
 ## Requirements
 
-- You will need the [models](./models) and pass the path to the NN loader
-
 ## Example of usage (Browser or NodeJS)
 
 ```js
@@ -26,7 +24,7 @@ npm i extract-faces
 import { extractFaces, loadNN } from 'extract-faces';
 
 async function run(){
-  await loadNN("./path/")
+  await loadNN("./path/") //the NN is in the "/models" folder
   const detections = await extractFaces('./testThreeFaces.jpg');
   console.log(detections); //sample output below
 };
